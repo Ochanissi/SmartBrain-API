@@ -44,9 +44,9 @@ const auth = require("./controllers/authorization");
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
+    host: "postgresql-pointy-19279",
     user: "postgres",
-    password: "YOUR_DB_PASSWORD_HERE",
+    password: "",
     database: "smart-brain"
   }
 });
