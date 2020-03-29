@@ -1,13 +1,13 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 // Redis Setup
-const redis = require("redis");
+const redis = require('redis');
 // You will want to update your host to the proper address in production
-const redisClient = redis.createClient({ host: "redis-silhouetted-10306" });
+const redisClient = redis.createClient({ host: 'redis-silhouetted-10306' });
 
 const signToken = username => {
   const jwtPayload = { username };
-  return jwt.sign(jwtPayload, "JWT_SECRET_KEY", { expiresIn: "2 days" });
+  return jwt.sign(jwtPayload, 'JWT_SECRET_KEY', { expiresIn: '2 days' });
 };
 
 const setToken = (key, value) => Promise.resolve(redisClient.set(key, value));
@@ -17,7 +17,7 @@ const createSession = user => {
   const token = signToken(email);
   return setToken(token, id)
     .then(() => {
-      return { success: "true", userId: id, token, user };
+      return { success: 'true', userId: id, token, user };
     })
     .catch(console.log);
 };
@@ -25,23 +25,23 @@ const createSession = user => {
 const handleSignin = (db, bcrypt, req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return Promise.reject("incorrect form submission");
+    return Promise.reject('incorrect form submission');
   }
   return db
-    .select("email", "hash")
-    .from("login")
-    .where("email", "=", email)
+    .select('email', 'hash')
+    .from('login')
+    .where('email', '=', email)
     .then(data => {
       const isValid = bcrypt.compareSync(password, data[0].hash);
       if (isValid) {
         return db
-          .select("*")
-          .from("users")
-          .where("email", "=", email)
+          .select('*')
+          .from('users')
+          .where('email', '=', email)
           .then(user => user[0])
-          .catch(err => res.status(400).json("unable to get user"));
+          .catch(err => res.status(400).json('unable to get user'));
       } else {
-        return Promise.reject("wrong credentials");
+        return Promise.reject('wrong credentials');
       }
     })
     .catch(err => err);
@@ -51,7 +51,7 @@ const getAuthTokenId = (req, res) => {
   const { authorization } = req.headers;
   return redisClient.get(authorization, (err, reply) => {
     if (err || !reply) {
-      return res.status(401).send("Unauthorized");
+      return res.status(401).send('Unauthorized');
     }
     return res.json({ id: reply });
   });
