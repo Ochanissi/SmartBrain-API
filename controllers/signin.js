@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 // Redis Setup
 const redis = require('redis');
-// You will want to update your host to the proper address in production
 const redisClient = redis.createClient(process.env.REDIS_URL);
 
 const signToken = username => {
