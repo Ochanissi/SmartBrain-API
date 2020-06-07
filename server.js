@@ -13,7 +13,7 @@ const auth = require('./controllers/authorization');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString : process.env.DATABASE_URL,
+//     connectionString : process.env.SMARTBRAIN_DATABASE_URL,
 //     ssl: true
 //   }
 // });
@@ -44,9 +44,9 @@ const auth = require('./controllers/authorization');
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: 'true'
-  }
+    connectionString: process.env.SMARTBRAIN_DATABASE_URL,
+    ssl: 'true',
+  },
 });
 
 const app = express();
@@ -72,6 +72,10 @@ app.post('/imageurl', auth.requireAuth, (req, res) => {
   image.handleApiCall(req, res);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`app is running on port 3000 ${process.env.PORT || 3000}`);
+app.listen(process.env.PORT || process.env.SMARTBRAIN_API_PORT || 5005, () => {
+  console.log(
+    `app is running on port 3000 ${
+      process.env.PORT || process.env.SMARTBRAIN_API_PORT || 5005
+    }`
+  );
 });
