@@ -74,7 +74,7 @@ app.post('/imageurl', auth.requireAuth, (req, res) => {
 
 app.listen(process.env.PORT || process.env.SMARTBRAIN_API_PORT || 5005, () => {
   console.log(
-    `app is running on port 3000 ${
+    `app is running on port ${
       process.env.PORT || process.env.SMARTBRAIN_API_PORT || 5005
     }`
   );
