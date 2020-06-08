@@ -38,7 +38,7 @@ const db = knex({
 
     host : '127.0.0.1',
     user : 'postgres',
-    password : null,
+    password : 'postgres',
     database : 'smartbrain'
   },
 });
