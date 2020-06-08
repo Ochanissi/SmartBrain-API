@@ -13,7 +13,7 @@ const auth = require('./controllers/authorization');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString : process.env.SMARTBRAIN_DATABASE_URL,
+//     connectionString : process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
 //     ssl: true
 //   }
 // });
@@ -28,26 +28,26 @@ const auth = require('./controllers/authorization');
 //   }
 // });
 
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     host : process.env.POSTGRES_HOST,
-//     user : process.env.POSTGRES_USER,
-//     password : process.env.POSTGRES_PASSWORD,
-//     database : process.env.POSTGRES_DB
-//   }
-// });
-
-// console.log(process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD);
-
-//Database Setup
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.SMARTBRAIN_DATABASE_URL,
-    ssl: 'true',
+    host: process.env.SMARTBRAIN_API_POSTGRES_HOST,
+    user: process.env.SMARTBRAIN_API_POSTGRES_USER,
+    password: process.env.SMARTBRAIN_API_POSTGRES_PASSWORD,
+    database: process.env.SMARTBRAIN_API_POSTGRES_DB,
   },
 });
+
+// console.log(process.env.SMARTBRAIN_API_POSTGRES_USER, process.env.SMARTBRAIN_API_POSTGRES_PASSWORD);
+
+//Database Setup
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     connectionString: process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
+//     ssl: 'true',
+//   },
+// });
 
 const app = express();
 
