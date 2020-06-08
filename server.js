@@ -13,7 +13,7 @@ const auth = require('./controllers/authorization');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString : process.env.SMARTBRAIN_API_POSTGRES_HOST,
+//     connectionString : process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
 //     ssl: true
 //   }
 // });
@@ -34,7 +34,13 @@ const db = knex({
     host: process.env.SMARTBRAIN_API_POSTGRES_HOST,
     user: process.env.SMARTBRAIN_API_POSTGRES_USER,
     password: process.env.SMARTBRAIN_API_POSTGRES_PASSWORD,
-    database: process.env.SMARTBRAIN_API_POSTGRES_DB,
+    database: process.env.SMARTBRAIN_API_POSTGRES_DB
+
+    // host : '127.0.0.1',
+    // user : 'postgres',
+    // password : 'postgres',
+    // database : 'smartbrain'
+
   },
 });
 
@@ -44,7 +50,7 @@ const db = knex({
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString: process.env.SMARTBRAIN_API_POSTGRES_HOST,
+//     connectionString: process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
 //     ssl: 'true',
 //   },
 // });
