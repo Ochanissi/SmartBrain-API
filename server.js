@@ -13,7 +13,7 @@ const auth = require('./controllers/authorization');
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString : process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
+//     connectionString : process.env.SMARTBRAIN_API_POSTGRES_HOST,
 //     ssl: true
 //   }
 // });
@@ -44,7 +44,7 @@ const db = knex({
 // const db = knex({
 //   client: 'pg',
 //   connection: {
-//     connectionString: process.env.SMARTBRAIN_API_SMARTBRAIN_API_POSTGRES_HOST,
+//     connectionString: process.env.SMARTBRAIN_API_POSTGRES_HOST,
 //     ssl: 'true',
 //   },
 // });
