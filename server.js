@@ -31,15 +31,10 @@ const auth = require('./controllers/authorization');
 const db = knex({
   client: 'pg',
   connection: {
-    // host: process.env.SMARTBRAIN_API_POSTGRES_HOST,
-    // user: process.env.SMARTBRAIN_API_POSTGRES_USER,
-    // password: process.env.SMARTBRAIN_API_POSTGRES_PASSWORD,
-    // database: process.env.SMARTBRAIN_API_POSTGRES_DB,
-
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'postgres',
-    database : 'smartbrain'
+    host: process.env.SMARTBRAIN_API_POSTGRES_HOST,
+    user: process.env.SMARTBRAIN_API_POSTGRES_USER,
+    password: process.env.SMARTBRAIN_API_POSTGRES_PASSWORD,
+    database: process.env.SMARTBRAIN_API_POSTGRES_DB,
   },
 });
 
