@@ -40,8 +40,6 @@ const db = knex({
 
 // console.log(process.env.SMARTBRAIN_API_POSTGRES_USER, process.env.SMARTBRAIN_API_POSTGRES_PASSWORD);
 
-console.log(db);
-
 //Database Setup
 // const db = knex({
 //   client: 'pg',
