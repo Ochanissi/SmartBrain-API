@@ -2,7 +2,10 @@ const jwt = require('jsonwebtoken');
 
 // Redis Setup
 const redis = require('redis');
-const redisClient = redis.createClient(process.env.SMARTBRAIN_API_REDIS_URL);
+// const redisClient = redis.createClient(process.env.SMARTBRAIN_API_REDIS_URL);
+const redisClient = redis.createClient({
+  host: process.env.SMARTBRAIN_API_REDIS_HOST,
+});
 
 const signToken = (username) => {
   const jwtPayload = { username };
@@ -24,7 +27,7 @@ const createSession = (user) => {
 const handleSignin = (db, bcrypt, req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return Promise.reject('incorrect form submission');
+    return Promise.reject('Incorrect form submission!');
   }
   return db
     .select('email', 'hash')
@@ -38,9 +41,9 @@ const handleSignin = (db, bcrypt, req, res) => {
           .from('users')
           .where('email', '=', email)
           .then((user) => user[0])
-          .catch((err) => res.status(400).json('unable to get user'));
+          .catch((err) => res.status(400).json('Unable to get user!'));
       } else {
-        return Promise.reject('wrong credentials');
+        return Promise.reject('Wrong credentials!');
       }
     })
     .catch((err) => err);
@@ -50,7 +53,7 @@ const getAuthTokenId = (req, res) => {
   const { authorization } = req.headers;
   return redisClient.get(authorization, (err, reply) => {
     if (err || !reply) {
-      return res.status(401).send('Unauthorized');
+      return res.status(401).send('Unauthorized!');
     }
     return res.json({ id: reply });
   });
