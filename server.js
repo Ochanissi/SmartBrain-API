@@ -35,6 +35,12 @@ const db = knex({
     user: process.env.SMARTBRAIN_API_POSTGRES_USER,
     password: process.env.SMARTBRAIN_API_POSTGRES_PASSWORD,
     database: process.env.SMARTBRAIN_API_POSTGRES_DB,
+
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : 'postgres',
+    database : 'smartbrain'
+
   },
 });
 
