@@ -2,9 +2,7 @@ const jwt = require('jsonwebtoken');
 
 // Redis Setup
 const redis = require('redis');
-const redisClient = redis.createClient(
-  process.env.SMARTBRAIN_API_SMARTBRAIN_REDIS_URL
-);
+const redisClient = redis.createClient(process.env.SMARTBRAIN_API_REDIS_URL);
 
 const signToken = (username) => {
   const jwtPayload = { username };
